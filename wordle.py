@@ -19,9 +19,37 @@ def remove_trash4(setW, let1, let2, let3, let4, det1):
             setR.add(each)
     return setR
 
+def cleanSet(final_res, setW):
+    temp = []
+    valid = 0
+    trash = []
+    for each in final_res:
+        if each != "":
+            count = final_res.index(each)
+            temp.append(count)
+    # print(final_res)
+    # print(temp)
+    
+    if len(temp) != 0:
+        valid = 1
+        for each in temp:
+            for e in setW:
+                if e[each] != final_res[each]:
+                    trash.append(e)
+    
+    if valid == 1:
+        for each in trash:
+            setW.remove(each)
+        return setW
+    else:
+        return setW
+
+
+
 setW = set()
 counter = 0
 contains = []
+final_res = ["","","","",""]
 
 #main loop
 while len(contains) != 5:
@@ -32,7 +60,7 @@ while len(contains) != 5:
     i = 0
     for each in colors:
         if each == "g": #if letter is marked as green it is in the right place
-            #final_res[i] = word[i]
+            final_res[i] = word[i]
             contains.append(word[i])
         elif each == "y": # if letter is marked as yellow it is in the word but not right place
             contains.append(word[i])
@@ -58,8 +86,10 @@ while len(contains) != 5:
         setW = remove_trash3(setW, contains[0], contains[1], contains[2], d_contains[0], d_contains[1])
     elif len(contains) == 4:
         setW = remove_trash4(setW, contains[0], contains[1], contains[2], contains[3], d_contains[0])
+
     if colors == "ggggg":
         print("WELL DONE!")
     else:
+        setW = cleanSet(final_res, setW)
         print(setW)
     counter += 1
