@@ -27,7 +27,7 @@ def cleanSet(final_res, setW):
         if each != "":
             count = final_res.index(each)
             temp.append(count)
-    # print(final_res)
+    print(final_res)
     # print(temp)
     
     if len(temp) != 0:
