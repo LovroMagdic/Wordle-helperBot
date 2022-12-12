@@ -44,6 +44,24 @@ def cleanSet(final_res, setW):
     else:
         return setW
 
+def checkdup(word, colors):
+    word = list(word)
+    colors = list(colors)
+    d = []
+    tmp = []
+    i = 0
+
+    for each in word:
+        if each in tmp:
+            d.append([each, i])
+        tmp.append(each)
+        i+=1
+    for each in d:
+        if colors[each[1]] == "n":
+            colors[each[1]] = "y"
+    colors = "".join(colors)
+    word = "".join(word)
+    return [word, colors]
 
 
 setW = set()
@@ -57,6 +75,9 @@ while len(contains) != 5:
     d_contains = []
     word = input("Enter word > ")
     colors = input("Input colors returned in G Y N > ")
+    item = checkdup(word, colors)
+    word = item[0]
+    colors = item[1]
     i = 0
     for each in colors:
         if each == "g": #if letter is marked as green it is in the right place
