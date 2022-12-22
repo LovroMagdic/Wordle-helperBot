@@ -6,4 +6,5 @@ Python helper bot for solving daily woordle.<br />
 ![ Alt text](./readme/image.jpg)<br />
 ### TODO:
 - add function for automating input and getting colors from webpage.<br />
+- add removing words based on returned yellow positions, example. if first letter is yellow remove all words where first letter is that.<br />
 
